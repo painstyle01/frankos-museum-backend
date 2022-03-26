@@ -23,8 +23,9 @@ from api import views
 
 router = routers.DefaultRouter()
 
-router.register(r'products', views.ProductViewSet)
+router.register(r"products", views.ProductViewSet)
 urlpatterns = [
+    re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
     re_path(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("admin/", admin.site.urls),
