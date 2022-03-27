@@ -4,6 +4,7 @@ from .models import Product
 from rest_framework import viewsets
 from api.serializers import ProductSerializer
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from liqpay import LiqPay
 import json
 
@@ -11,7 +12,7 @@ import json
 LIQPAY_PUBKEY = "sandbox_i34833063512"
 LIQPAY_PRIVATE = "sandbox_cuqc4wGddoGwXZz0spEhMpkanF4NY88Ja8ADeUQo"
 
-
+@csrf_exempt
 def donate(request):
     if request.method == "POST":
         data = json.loads(request.body.decode())
