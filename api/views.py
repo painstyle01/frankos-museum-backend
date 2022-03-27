@@ -11,20 +11,23 @@ import json
 LIQPAY_PUBKEY = "sandbox_i34833063512"
 LIQPAY_PRIVATE = "sandbox_cuqc4wGddoGwXZz0spEhMpkanF4NY88Ja8ADeUQo"
 
+
 def donate(request):
     if request.method == "POST":
         data = json.loads(request.body.decode())
         print(data)
-        cash = data['money']
+        cash = data["money"]
         liqpay = LiqPay(LIQPAY_PUBKEY, LIQPAY_PRIVATE)
-        html = liqpay.cnb_form({
-            "action": "pay",
-            "amount": cash,
-            "currency": "UAH",
-            "description": "Donation",
-            "order_id": random.randint(1,19999999),
-            "version": "3"
-        })
+        html = liqpay.cnb_form(
+            {
+                "action": "pay",
+                "amount": cash,
+                "currency": "UAH",
+                "description": "Donation",
+                "order_id": random.randint(1, 19999999),
+                "version": "3",
+            }
+        )
         return HttpResponse(html)
     else:
         return HttpResponse(404)
@@ -37,4 +40,3 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
