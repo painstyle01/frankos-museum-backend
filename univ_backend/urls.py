@@ -25,9 +25,13 @@ router = routers.DefaultRouter()
 
 router.register(r"products", views.ProductViewSet)
 urlpatterns = [
+    path('footer/', include("footer.urls")),
+    path('', include("main_page.urls")),
+    path('', include("multimedia.urls")),
     re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
     re_path(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    re_path(r"^ckeditor/", include('ckeditor_uploader.urls')),
     path("admin/", admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
