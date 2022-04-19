@@ -1,8 +1,8 @@
 import random
 
-from .models import Product
+from .models import Product, BlogPost
 from rest_framework import viewsets
-from api.serializers import ProductSerializer
+from api.serializers import ProductSerializer, BlogPostSerializer
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from liqpay import LiqPay
@@ -41,3 +41,11 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+class NewsViewSet(viewsets.ModelViewSet):
+    """
+    Endpoint for adding,deleting news from main page.
+    """
+
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer

@@ -2,6 +2,7 @@ from django.db import models
 
 PRODUCT_TYPE = (("book", "Книжка"), ("statue", "Фігурка"), ("trinket", "Брелок"))
 
+
 # Create your models here.
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
@@ -14,3 +15,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BlogPost(models.Model):
+    id = models.AutoField(primary_key=True)
+    url = models.TextField()
+    source_name = models.TextField(max_length=100)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.id
