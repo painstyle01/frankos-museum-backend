@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from django.db.models.fields.files import ImageField
 
@@ -7,6 +8,8 @@ from embed_video.fields import EmbedVideoField
 class CatalogyVideo(models.Model):
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to='picture/')
+    inner_picture = ImageField(upload_to = 'picture/inner_pucture')
+    description = models.TextField()
 
     def __str__(self):
         return self.title
@@ -15,6 +18,8 @@ class CatalogyVideo(models.Model):
 class  CatalogyAudio(models.Model):
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to='picture/')
+    inner_picture = ImageField(upload_to = 'picture/inner_pucture')
+    description = models.TextField()
 
     def __str__(self):
         return self.title
@@ -25,6 +30,7 @@ class Video(models.Model):
     video_file = models.FileField(upload_to='video/',blank=True)
     youtube_link = EmbedVideoField(null=True,blank=True)
     link_video = models.ForeignKey(CatalogyVideo, on_delete=models.PROTECT)
+    description = models.TextField()
 
 
 class Audio(models.Model):
@@ -32,6 +38,7 @@ class Audio(models.Model):
     subtitle = models.CharField(max_length=200)
     audio_file = models.FileField(upload_to='audio/')
     link_audio = models.ForeignKey(CatalogyAudio, on_delete=models.PROTECT)
+    description = models.TextField()
 
 
 class Image(models.Model):

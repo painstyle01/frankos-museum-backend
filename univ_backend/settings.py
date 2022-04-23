@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "main_page",
     "footer",
     "team",
+    "contacts",
+    "excursions",
 ]
 
 CKEDITOR_UPLOAD_PATH ='uploads/'

@@ -26,9 +26,11 @@ router = routers.DefaultRouter()
 router.register(r"products", views.ProductViewSet)
 urlpatterns = [
     path('footer/', include("footer.urls")),
+    path('contacts/', include('contacts.urls')),
     path('', include("main_page.urls")),
     path('', include("multimedia.urls")),
     path('', include("team.urls")),
+    path('', include("excursions.urls")),
     re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
     re_path(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
