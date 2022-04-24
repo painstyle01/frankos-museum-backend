@@ -6,5 +6,5 @@ class ExcursionListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Excursion
-        fields = '__all__'
+        fields = ("id","excursion","text")
 
