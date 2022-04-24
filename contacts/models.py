@@ -8,3 +8,5 @@ class Contact(models.Model):
     contact_us = models.CharField(max_length=300)
     arrival = models.CharField(max_length=400)
     
+    def __str__(self):
+        return self.time
