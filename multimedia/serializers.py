@@ -4,6 +4,7 @@ from .models import CatalogyAudio, CatalogyVideo, Video,  Audio, Image
 
 class CatalogyVideoListSerializer(serializers.ModelSerializer):
 
+
     class Meta:
         model = CatalogyVideo
         fields = '__all__'
@@ -20,14 +21,14 @@ class VideoListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = '__all__'
+        exclude = ['slug_catalogy_video']
 
 
 class AudioListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Audio
-        fields = '__all__'
+        exclude = ['slug_catalogy_audio']
 
 
 class ImageListSerializer(serializers.ModelSerializer):

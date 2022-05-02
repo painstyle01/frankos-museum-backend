@@ -1,4 +1,3 @@
-from distutils.command.upload import upload
 from django.db import models
 from django.db.models.fields.files import ImageField
 
@@ -10,6 +9,7 @@ class CatalogyVideo(models.Model):
     picture = ImageField(upload_to='picture/')
     inner_picture = ImageField(upload_to = 'picture/inner_pucture')
     description = models.TextField()
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
 
     def __str__(self):
         return self.title
@@ -20,6 +20,7 @@ class  CatalogyAudio(models.Model):
     picture = ImageField(upload_to='picture/')
     inner_picture = ImageField(upload_to = 'picture/inner_pucture')
     description = models.TextField()
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
 
     def __str__(self):
         return self.title
@@ -29,7 +30,7 @@ class Video(models.Model):
     title = models.CharField(max_length=250)
     video_file = models.FileField(upload_to='video/',blank=True)
     youtube_link = EmbedVideoField(null=True,blank=True)
-    link_video = models.ForeignKey(CatalogyVideo, on_delete=models.PROTECT)
+    slug_catalogy_video = models.ForeignKey(CatalogyVideo, to_field='slug', on_delete=models.PROTECT)
     description = models.TextField()
 
 
@@ -37,7 +38,7 @@ class Audio(models.Model):
     title = models.CharField(max_length=250)
     subtitle = models.CharField(max_length=200)
     audio_file = models.FileField(upload_to='audio/')
-    link_audio = models.ForeignKey(CatalogyAudio, on_delete=models.PROTECT)
+    slug_catalogy_audio = models.ForeignKey(CatalogyAudio, to_field='slug', on_delete=models.PROTECT)
     description = models.TextField()
 
 
