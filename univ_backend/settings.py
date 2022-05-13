@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "contacts",
     "excursions",
     "history_of_museum",
+    "archive",
 ]
 
 CKEDITOR_UPLOAD_PATH ='uploads/'
