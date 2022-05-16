@@ -15,6 +15,16 @@ LIQPAY_PRIVATE = "sandbox_cuqc4wGddoGwXZz0spEhMpkanF4NY88Ja8ADeUQo"
 
 @csrf_exempt
 def donate(request):
+    if request.method == "PUT":
+        data = json.loads(request.body.decode())
+        send_mail(
+            subject="Нове замовлення",
+            message=f"До вас пступило нове замовлення: {data.get('order')}",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[data.get('to_email')]
+        )
+    else:
+        return HttpResponse(404)
     if request.method == "POST":
         data = json.loads(request.body.decode())
         print(data)
@@ -38,15 +48,7 @@ def donate(request):
 @csrf_exempt
 def send_email_with_order(request):
     if request.method == "POST":
-        data = json.loads(request.body.decode())
-        send_mail(
-            subject="Нове замовлення",
-            message=f"До вас пступило нове замовлення: {data.get('order')}",
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[data.get('to_email')]
-        )
-    else:
-        return HttpResponse(404)
+
 
 
 class ProductViewSet(viewsets.ModelViewSet):
