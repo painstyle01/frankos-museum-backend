@@ -45,12 +45,6 @@ def donate(request):
         return HttpResponse(404)
 
 
-@csrf_exempt
-def send_email_with_order(request):
-    if request.method == "POST":
-
-
-
 class ProductViewSet(viewsets.ModelViewSet):
     """
     API endpoint to look/add/edit product for shops.
