@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     "history_of_museum",
     "archive",
 ]
-
 CKEDITOR_UPLOAD_PATH ='uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 

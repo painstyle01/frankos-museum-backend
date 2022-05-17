@@ -15,5 +15,5 @@ class AbstractBlogPost(models.Model):
         return self.url
 
 
-class PostArchive(AbstractBlogPost):
+class Archive(AbstractBlogPost):
     pass

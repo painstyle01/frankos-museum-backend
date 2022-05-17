@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import PostArchive
+from .models import Archive
 # Register your models here.
-admin.site.register(PostArchive )
+admin.site.register(Archive )
