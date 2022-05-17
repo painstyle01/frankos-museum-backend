@@ -23,8 +23,8 @@ def donate(request):
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[data.get('to_email')]
         )
-    else:
-        return HttpResponse(404)
+        print(data)
+        return HttpResponse("WORKING")
     if request.method == "POST":
         data = json.loads(request.body.decode())
         print(data)
