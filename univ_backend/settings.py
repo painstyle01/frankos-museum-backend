@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     "contacts",
     "excursions",
     "history_of_museum",
+    "programs",
+    "lecture",
 ]
 
 CKEDITOR_UPLOAD_PATH ='uploads/'
@@ -208,3 +210,11 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CSRF_TRUSTED_ORIGINS = ["https://frankos-museum-backend.azurewebsites.net"]
+
+#Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_POST = 587
+EMAIL_HOST_USER = 'tt0181110@gmail.com'
+EMAIL_HOST_PASSWORD = 'tt0181110test'
+EMAIL_USE_TLS = True
