@@ -33,6 +33,8 @@ urlpatterns = [
     path('', include("team.urls")),
     path('', include("excursions.urls")),
     path('', include("history_of_museum.urls")),
+    path('programs/', include("programs.urls")),
+    path('lecture/', include("lecture.urls")),
     path('archive/', include('archive.urls')),
     re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
