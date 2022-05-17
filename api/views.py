@@ -1,5 +1,5 @@
 import random
-
+from django.conf import settings
 from .models import Product, BlogPost
 from rest_framework import viewsets
 from api.serializers import ProductSerializer, BlogPostSerializer
@@ -7,13 +7,24 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from liqpay import LiqPay
 import json
-
+from django.core.mail import send_mail
 
 LIQPAY_PUBKEY = "sandbox_i34833063512"
 LIQPAY_PRIVATE = "sandbox_cuqc4wGddoGwXZz0spEhMpkanF4NY88Ja8ADeUQo"
 
+
 @csrf_exempt
 def donate(request):
+    if request.method == "PUT":
+        data = json.loads(request.body.decode())
+        send_mail(
+            subject="Нове замовлення",
+            message=f"До вас пступило нове замовлення: {data.get('order')}",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[data.get('to_email')]
+        )
+        print(data)
+        return HttpResponse("WORKING")
     if request.method == "POST":
         data = json.loads(request.body.decode())
         print(data)
@@ -41,6 +52,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
 
 class NewsViewSet(viewsets.ModelViewSet):
     """

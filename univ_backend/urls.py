@@ -35,6 +35,7 @@ urlpatterns = [
     path('', include("history_of_museum.urls")),
     path('programs/', include("programs.urls")),
     path('lecture/', include("lecture.urls")),
+    path('archive/', include('archive.urls')),
     re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
     re_path(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
