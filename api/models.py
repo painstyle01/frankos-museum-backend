@@ -25,4 +25,4 @@ class BlogPost(models.Model):
     archived = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.source_name
+        return str(self.id)
