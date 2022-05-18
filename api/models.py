@@ -22,6 +22,7 @@ class BlogPost(models.Model):
     url = models.TextField()
     source_name = models.TextField(max_length=100)
     date = models.DateField()
-
+    archived = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.source_name
