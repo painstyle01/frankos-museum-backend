@@ -10,6 +10,6 @@ from .views import DepartmentListView, EmployeeListView
 
 
 urlpatterns = [
-    path('team/', DepartmentListView.as_view()),
-    path('team/<int:pk>', EmployeeListView.as_view()),
+    path("team/", DepartmentListView.as_view()),
+    path("team/<int:pk>", EmployeeListView.as_view()),
 ]

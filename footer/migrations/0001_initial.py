@@ -7,17 +7,24 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Logotype',
+            name="Logotype",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name_partners', models.CharField(max_length=100)),
-                ('link_partners', models.URLField(null=True)),
-                ('logotype', models.FileField(upload_to='logotype/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name_partners", models.CharField(max_length=100)),
+                ("link_partners", models.URLField(null=True)),
+                ("logotype", models.FileField(upload_to="logotype/")),
             ],
         ),
     ]

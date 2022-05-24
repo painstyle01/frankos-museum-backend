@@ -1,8 +1,14 @@
 import random
 from django.conf import settings
-from .models import Product, BlogPost
+from .models import Product, BlogPost, ActualNews, Timeline, Library
 from rest_framework import viewsets
-from api.serializers import ProductSerializer, BlogPostSerializer
+from api.serializers import (
+    ProductSerializer,
+    BlogPostSerializer,
+    ActualNewsSerializer,
+    LibrarySerializer,
+    TimelineSerializer,
+)
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from liqpay import LiqPay
@@ -21,7 +27,7 @@ def donate(request):
             subject="Нове замовлення",
             message=f"До вас пступило нове замовлення: {data.get('order')}",
             from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[data.get('to_email')]
+            recipient_list=[data.get("to_email")],
         )
         return HttpResponse("300 Send")
     if request.method == "POST":
@@ -60,3 +66,30 @@ class NewsViewSet(viewsets.ModelViewSet):
 
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
+
+
+class LibraryViewSet(viewsets.ModelViewSet):
+    """
+    Endpoint for adding,deleting news from main page.
+    """
+
+    queryset = Library.objects.all()
+    serializer_class = LibrarySerializer
+
+
+class TimelineViewSet(viewsets.ModelViewSet):
+    """
+    Endpoint for adding,deleting news from main page.
+    """
+
+    queryset = Timeline.objects.all()
+    serializer_class = TimelineSerializer
+
+
+class ActualNewsViewSet(viewsets.ModelViewSet):
+    """
+    Endpoint for adding,deleting news from main page.
+    """
+
+    queryset = ActualNews.objects.all()
+    serializer_class = ActualNewsSerializer

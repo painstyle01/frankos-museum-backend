@@ -2,13 +2,16 @@ from django.contrib import admin
 from embed_video.admin import AdminVideoMixin
 
 from .models import CatalogyAudio, CatalogyVideo, Video, Audio, Image
+
 # Register your models here.
+
 
 class VideoAdmin(AdminVideoMixin, admin.ModelAdmin):
     pass
 
+
 class CatalogyAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('title',)}
+    prepopulated_fields = {"slug": ("title",)}
 
 
 admin.site.register(CatalogyVideo, CatalogyAdmin)

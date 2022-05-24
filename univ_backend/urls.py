@@ -24,22 +24,25 @@ from api import views
 router = routers.DefaultRouter()
 
 router.register(r"products", views.ProductViewSet)
-router.register(r'news', views.NewsViewSet)
+router.register(r"news", views.NewsViewSet)
+router.register(r"timeline", views.TimelineViewSet)
+router.register(r"actualnews", views.ActualNewsViewSet)
+router.register(r'library', views.LibraryViewSet)
 urlpatterns = [
-    path('footer/', include("footer.urls")),
-    path('contacts/', include('contacts.urls')),
-    path('', include("main_page.urls")),
-    path('', include("multimedia.urls")),
-    path('', include("team.urls")),
-    path('', include("excursions.urls")),
-    path('', include("history_of_museum.urls")),
-    path('programs/', include("programs.urls")),
-    path('lecture/', include("lecture.urls")),
-    path('archive/', include('archive.urls')),
+    path("footer/", include("footer.urls")),
+    path("contacts/", include("contacts.urls")),
+    path("", include("main_page.urls")),
+    path("", include("multimedia.urls")),
+    path("", include("team.urls")),
+    path("", include("excursions.urls")),
+    path("", include("history_of_museum.urls")),
+    path("programs/", include("programs.urls")),
+    path("lecture/", include("lecture.urls")),
+    path("archive/", include("archive.urls")),
     re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
     re_path(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
-    re_path(r"^ckeditor/", include('ckeditor_uploader.urls')),
+    re_path(r"^ckeditor/", include("ckeditor_uploader.urls")),
     path("admin/", admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

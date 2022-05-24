@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Excursion(models.Model):
 
     excursion = models.CharField(max_length=200)

@@ -12,7 +12,7 @@ class Department(models.Model):
 
 
 class Employee(models.Model):
-    image = models.ImageField(upload_to = 'employee_image/')
+    image = models.ImageField(upload_to="employee_image/")
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=20)

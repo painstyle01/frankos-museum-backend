@@ -11,7 +11,6 @@ from .models import Lecture
 
 
 class LectureView(APIView):
-
     def get(self, request):
         queryset = Lecture.objects.all()
         serializer = LectureSerializer(queryset, many=True)
@@ -19,17 +18,17 @@ class LectureView(APIView):
 
     def post(self, request):
         post = Lecture.objects.create(
-            name = request.data['name'],
-            email = request.data['email'],
-            phone = request.data['phone'],
-            comment = request.data['comment']
+            name=request.data["name"],
+            email=request.data["email"],
+            phone=request.data["phone"],
+            comment=request.data["comment"],
         )
         text = f"Замовив - {request.data['name']}\n адреса -  {request.data['email']}\n телефон - {request.data['phone']}\n коментар - {request.data['comment']}"
         send_mail(
-            'Замовлення лекції',
+            "Замовлення лекції",
             text,
-            'tt0181110@gmail.com',
-            ['tt0181110@gmail.com'],
-            fail_silently=False
+            "tt0181110@gmail.com",
+            ["tt0181110@gmail.com"],
+            fail_silently=False,
         )
-        return redirect('/api')
+        return redirect("/api")

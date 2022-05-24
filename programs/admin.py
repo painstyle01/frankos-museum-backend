@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import IntelligentProgram, ArtProgram,EducationalProgram
+from .models import IntelligentProgram, ArtProgram, EducationalProgram
+
 # Register your models here.
 
 admin.site.register(IntelligentProgram)
