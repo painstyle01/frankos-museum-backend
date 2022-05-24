@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     "programs",
     "lecture",
     "archive",
+    "projects",
+    "visit",
 ]
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"

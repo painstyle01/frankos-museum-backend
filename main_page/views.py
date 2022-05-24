@@ -11,7 +11,6 @@ class BackgroundListView(APIView):
     """class of background"""
 
     def get(self, request):
-        latest_id = Background.objects.latest("id").id
-        backgrounds = Background.objects.filter(id=latest_id)
-        bg_serializer = BackgroundListSerializer(backgrounds, many=True).data
+        backgrounds = Background.objects.last()
+        bg_serializer = BackgroundListSerializer(backgrounds).data
         return Response(bg_serializer)
