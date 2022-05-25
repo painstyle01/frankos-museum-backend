@@ -28,15 +28,15 @@ class CatalogyAudioListView(APIView):
 
 
 class VideoListView(APIView):
-    def get(self, request, key_slug):
-        video = Video.objects.filter(slug_catalogy_video=key_slug)
+    def get(self, request, link):
+        video = Video.objects.filter(link_video=link)
         serializer = VideoListSerializer(video, many=True)
         return Response(serializer.data)
 
 
 class AudioListView(APIView):
-    def get(self, request, key_slug):
-        audio = Audio.objects.filter(slug_catalogy_audio=key_slug)
+    def get(self, request, link):
+        audio = Audio.objects.filter(link_audio=link)
         serializer = AudioListSerializer(audio, many=True)
         return Response(serializer.data)
 

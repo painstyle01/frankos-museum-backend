@@ -38,9 +38,9 @@ class EducationalProgramListView(APIView):
 
 
 class DetailView(APIView):
-    def get(self, request, slug_k):
-        queryset_catalog_video = get_object_or_404(CatalogyVideo, slug=slug_k)
-        queryset_video = Video.objects.filter(slug_catalogy_video=slug_k)
+    def get(self, request, link):
+        queryset_catalog_video = get_object_or_404(CatalogyVideo, id=link)
+        queryset_video = Video.objects.filter(link_video=link)
         serializer_cat_video = CatalogyVideoListSerializer(queryset_catalog_video)
         serializer_video = VideoListSerializer(queryset_video, many=True)
         return Response(
