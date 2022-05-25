@@ -9,11 +9,8 @@ from embed_video.fields import EmbedVideoField
 class CatalogyVideo(models.Model):
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to="picture/")
-    inner_picture = ImageField(upload_to="picture/inner_pucture")
-    description = models.TextField()
-    slug = models.SlugField(
-        max_length=255, unique=True, db_index=True, verbose_name="URL"
-    )
+    inner_picture = ImageField(upload_to="picture/inner_pucture",default='default.png')
+    description = models.TextField(default="None")
 
     def __str__(self):
         return self.title
@@ -22,11 +19,8 @@ class CatalogyVideo(models.Model):
 class CatalogyAudio(models.Model):
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to="picture/")
-    inner_picture = ImageField(upload_to="picture/inner_pucture")
-    description = models.TextField()
-    slug = models.SlugField(
-        max_length=255, unique=True, db_index=True, verbose_name="URL"
-    )
+    inner_picture = ImageField(upload_to="picture/inner_pucture",default='default.png')
+    description = models.TextField(default="None")
 
     def __str__(self):
         return self.title
@@ -36,20 +30,20 @@ class Video(models.Model):
     title = models.CharField(max_length=250)
     video_file = models.FileField(upload_to="video/", blank=True)
     youtube_link = EmbedVideoField(null=True, blank=True)
-    slug_catalogy_video = models.ForeignKey(
-        CatalogyVideo, to_field="slug", on_delete=models.PROTECT
+    link_video = models.ForeignKey(
+        CatalogyVideo, on_delete=models.PROTECT
     )
-    description = models.TextField()
+    description = models.TextField(default="None")
 
 
 class Audio(models.Model):
     title = models.CharField(max_length=250)
     subtitle = models.CharField(max_length=200)
     audio_file = models.FileField(upload_to="audio/")
-    slug_catalogy_audio = models.ForeignKey(
-        CatalogyAudio, to_field="slug", on_delete=models.PROTECT
+    link_audio = models.ForeignKey(
+        CatalogyAudio, on_delete=models.PROTECT
     )
-    description = models.TextField()
+    description = models.TextField(default="None")
 
 
 class Image(models.Model):

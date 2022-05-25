@@ -1,14 +1,13 @@
 from django.db import models
 
 # Create your models here.
-from api.models import ActualNews
 
 
 class ActualNewsArchive(models.Model):
     id = models.AutoField(primary_key=True)
-    title = models.TextField(max_length=300)
-    author = models.TextField(max_length=50)
-    text = models.TextField()
+    title = models.TextField(max_length=300,default='None')
+    author = models.TextField(max_length=50,default='None')
+    text = models.TextField(default='None')
     date = models.DateField()
     archived = models.BooleanField(default=False)
 

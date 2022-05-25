@@ -18,13 +18,13 @@ class CatalogyAudioListSerializer(serializers.ModelSerializer):
 class VideoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
-        exclude = ["slug_catalogy_video"]
+        exclude = ["link_video"]
 
 
 class AudioListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Audio
-        exclude = ["slug_catalogy_audio"]
+        exclude = ["link_audio"]
 
 
 class ImageListSerializer(serializers.ModelSerializer):

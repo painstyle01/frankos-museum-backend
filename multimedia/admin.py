@@ -10,12 +10,11 @@ class VideoAdmin(AdminVideoMixin, admin.ModelAdmin):
     pass
 
 
-class CatalogyAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
 
 
-admin.site.register(CatalogyVideo, CatalogyAdmin)
-admin.site.register(CatalogyAudio, CatalogyAdmin)
+
+admin.site.register(CatalogyVideo)
+admin.site.register(CatalogyAudio)
 
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Audio)
