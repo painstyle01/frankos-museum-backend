@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Ticket, DetailsTicket
+from .models import Ticket, Rule
 
 
 class TicketSerializer(serializers.ModelSerializer):
@@ -8,11 +8,10 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = "__all__"
-
-
-class DetailsTicketSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = DetailsTicket
-        exclude = ['ticket_key']
         
+
+class RuleSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Rule
+        fields = "__all__"

@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.TicketView.as_view()),
-    path('<int:pk>', views.DetailsTicketView.as_view()),
+    path('rules/', views.RulesView.as_view())
 ]
