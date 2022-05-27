@@ -4,11 +4,12 @@ from django.db import models
 
 class Ticket(models.Model):
     name = models.CharField(max_length=55, verbose_name="Name of Ticket")
+    text = models.TextField(default="The ticket doesn't have details at the moment")
 
     def __str__(self):
         return self.name
 
 
-class DetailsTicket(models.Model):
-    text = models.TextField()
-    ticket_key = models.ForeignKey(Ticket, verbose_name='which ticket', on_delete=models.PROTECT)
+
+class Rule(models.Model):
+    text = models.TextField(default="There're no rules at the moment")
