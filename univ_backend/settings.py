@@ -235,24 +235,14 @@ WSGI_APPLICATION = "univ_backend.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sin',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': '127.0.0.1',
-        'PORT': '5050',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ["DBNAME"],
+        "HOST": os.environ["DBHOST"],
+        "USER": os.environ["DBUSER"],
+        "PASSWORD": os.environ["DBPASS"],
     }
 }
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.environ["DBNAME"],
-#         "HOST": os.environ["DBHOST"],
-#         "USER": os.environ["DBUSER"],
-#         "PASSWORD": os.environ["DBPASS"],
-#     }
-# }
 
 
 # Password validation
