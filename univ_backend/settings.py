@@ -49,18 +49,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "api",
     "admin_panel",
-    "multimedia",
-    "main_page",
     "footer",
     "team",
     "contacts",
     "excursions",
-    "history_of_museum",
-    "programs",
+    "history_of_museum",    
     "lecture",
-    "archive",
-    "projects",
-    "visit",
 ]
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
