@@ -28,19 +28,24 @@ router.register(r"news", views.NewsViewSet)
 router.register(r"timeline", views.TimelineViewSet)
 router.register(r"actualnews", views.ActualNewsViewSet)
 router.register(r'library', views.LibraryViewSet)
+router.register(r"background", views.BackgroundViewSet, basename="background")
+router.register(r"list-video", views.ListVideoViewSet, basename="video")
+router.register(r"list-audio", views.ListAudioViewSet, basename="audio")
+router.register(r"image", views.ImageViewSet)
+router.register(r"program-intelligent", views.IntelligentProgramViewSet, basename="intelligent")
+router.register(r"program-art", views.ArtProgramViewSet, basename="art")
+router.register(r"program-educational", views.EducationalProgramViewSet, basename="educational")
+router.register(r"archive", views.ActualNewsArchiveViewSet, basename="archive")
+router.register(r"project", views.ProjectViewSet)
+router.register(r"ticket", views.TicketViewSet)
+router.register(r"rule", views.RuleViewSet, basename='rule')
 urlpatterns = [
     path("footer/", include("footer.urls")),
     path("contacts/", include("contacts.urls")),
-    path("", include("main_page.urls")),
-    path("", include("multimedia.urls")),
     path("", include("team.urls")),
     path("", include("excursions.urls")),
     path("", include("history_of_museum.urls")),
-    path("programs/", include("programs.urls")),
     path("lecture/", include("lecture.urls")),
-    path("archive/", include("archive.urls")),
-    path("projects/", include("projects.urls")),
-    path("visit/", include("visit.urls")),
     re_path(r"^api/donate", include("api.urls")),
     re_path(r"^api/", include(router.urls)),
     re_path(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),

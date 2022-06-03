@@ -49,18 +49,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "api",
     "admin_panel",
-    "multimedia",
-    "main_page",
     "footer",
     "team",
     "contacts",
     "excursions",
-    "history_of_museum",
-    "programs",
+    "history_of_museum",    
     "lecture",
-    "archive",
-    "projects",
-    "visit",
 ]
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
@@ -241,14 +235,24 @@ WSGI_APPLICATION = "univ_backend.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ["DBNAME"],
-        "HOST": os.environ["DBHOST"],
-        "USER": os.environ["DBUSER"],
-        "PASSWORD": os.environ["DBPASS"],
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sin',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': '127.0.0.1',
+        'PORT': '5050',
     }
 }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.environ["DBNAME"],
+#         "HOST": os.environ["DBHOST"],
+#         "USER": os.environ["DBUSER"],
+#         "PASSWORD": os.environ["DBPASS"],
+#     }
+# }
 
 
 # Password validation

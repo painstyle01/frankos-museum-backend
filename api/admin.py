@@ -1,5 +1,21 @@
 from django.contrib import admin
-from .models import Product, BlogPost
+from .models import (
+    ActualNews,
+    Product, 
+    BlogPost, 
+    ListAudio, 
+    ListVideo, 
+    VideoDetail, 
+    AudioDetail,
+    IntelligentProgram,
+    ArtProgram,
+    EducationalProgram,
+    ActualNewsArchive,
+    Project, 
+    Ticket,
+    Rule,
+    Background
+    )
 
 
 # Register your models here.
@@ -27,3 +43,16 @@ class ActualNewsAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(ActualNews,ActualNewsAdmin)
+admin.site.register(Background)
+admin.site.register(ListAudio)
+admin.site.register(ListVideo)
+admin.site.register(VideoDetail)
+admin.site.register(AudioDetail)
+admin.site.register(IntelligentProgram)
+admin.site.register(ArtProgram)
+admin.site.register(EducationalProgram)
+admin.site.register(ActualNewsArchive)
+admin.site.register(Project)
+admin.site.register(Ticket)
+admin.site.register(Rule)
