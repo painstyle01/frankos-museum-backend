@@ -14,7 +14,9 @@ from .models import (
     Project, 
     Ticket,
     Rule,
-    Background
+    Background,
+    Exposition,
+    Collections
     )
 
 
@@ -56,3 +58,4 @@ admin.site.register(ActualNewsArchive)
 admin.site.register(Project)
 admin.site.register(Ticket)
 admin.site.register(Rule)
+admin.site.register(Exposition, Collections)

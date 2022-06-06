@@ -57,26 +57,28 @@ class ActualNews(models.Model):
 class Timeline(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.TextField(max_length=30)
+    text = models.TextField(default="Hellp")
+    picture = ImageField(upload_to="timeline/")
     date = models.DateField()
 
 
 class ActualNewsArchive(models.Model):
     id = models.AutoField(primary_key=True)
-    title = models.TextField(max_length=300,default='None')
-    author = models.TextField(max_length=50,default='None')
+    title = models.TextField(max_length=300, default='None')
+    author = models.TextField(max_length=50, default='None')
     text = models.TextField(default='None')
     date = models.DateField()
     archived = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)
-        
+
 
 class ListVideo(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to="picture/")
-    inner_picture = ImageField(upload_to="picture/inner_pucture",default='default.png')
+    inner_picture = ImageField(upload_to="picture/inner_pucture", default='default.png')
     description = models.TextField(default="None")
 
     def __str__(self):
@@ -87,13 +89,13 @@ class ListAudio(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to="picture/")
-    inner_picture = ImageField(upload_to="picture/inner_pucture",default='default.png')
+    inner_picture = ImageField(upload_to="picture/inner_pucture", default='default.png')
     description = models.TextField(default="None")
 
     def __str__(self):
         return self.title
 
-    
+
 class VideoDetail(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=250)
@@ -103,6 +105,7 @@ class VideoDetail(models.Model):
         ListVideo, on_delete=models.PROTECT, blank=True
     )
     description = models.TextField(default="None")
+
 
 class AudioDetail(models.Model):
     id = models.AutoField(primary_key=True)
@@ -179,3 +182,18 @@ class Rule(models.Model):
 class Background(models.Model):
     id = models.AutoField(primary_key=True)
     backgrounds = models.FileField(upload_to="backgrounds/")
+
+
+class Exposition(models.Model):
+    id = models.AutoField(primary_key=True)
+    image = models.FileField(upload_to='exposition/')
+    title = models.CharField(max_length=155)
+    subtitle = models.CharField(max_length=355)
+    description = models.TextField(default="None")
+
+
+class Collections(models.Model):
+    id = models.AutoField(primary_key=True)
+    image = models.FileField(upload_to='collections/')
+    title = models.CharField(max_length=155)
+    description = models.TextField(default="None")

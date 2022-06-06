@@ -39,6 +39,8 @@ router.register(r"archive", views.ActualNewsArchiveViewSet, basename="archive")
 router.register(r"project", views.ProjectViewSet)
 router.register(r"ticket", views.TicketViewSet)
 router.register(r"rule", views.RuleViewSet, basename='rule')
+router.register(r'collections', views.CollectionsViewSet)
+router.register(r'expositions', views.ExpositionViewSet)
 urlpatterns = [
     path("footer/", include("footer.urls")),
     path("contacts/", include("contacts.urls")),

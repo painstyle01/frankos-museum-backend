@@ -1,10 +1,10 @@
 from .models import (
-    Product, 
-    BlogPost, 
-    Library, 
-    Timeline, 
-    ActualNews, 
-    ListVideo, 
+    Product,
+    BlogPost,
+    Library,
+    Timeline,
+    ActualNews,
+    ListVideo,
     ListAudio,
     VideoDetail,
     AudioDetail,
@@ -16,8 +16,8 @@ from .models import (
     Project,
     Ticket,
     Rule,
-    Background
-    )
+    Background, Exposition, Collections
+)
 from rest_framework import serializers
 
 
@@ -44,7 +44,7 @@ class BlogPostSerializer(serializers.HyperlinkedModelSerializer):
 class TimelineSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Timeline
-        fields = ("id", "title", "date")
+        fields = ("id", "title", "date", "text", "picture")
 
 
 class LibrarySerializer(serializers.HyperlinkedModelSerializer):
@@ -128,10 +128,22 @@ class ProjectSerializer(serializers.ModelSerializer):
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        fields = ("id", "name" ,"text")
+        fields = ("id", "name", "text")
 
 
 class RuleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rule
-        fields = ("id", "text")        
+        fields = ("id", "text")
+
+
+class ExpositionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exposition
+        fields = ("id", "image", "title", "subtitle", "description")
+
+
+class CollectionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Collections
+        fields = ("id", "image", "title", "description")

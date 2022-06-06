@@ -18,7 +18,9 @@ from .models import (
     Project,
     Ticket,
     Rule,
-    Background
+    Background,
+    Exposition,
+    Collections
     )
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -30,7 +32,7 @@ from api.serializers import (
     TimelineSerializer,
     ListAudioSerializer,
     ListVideoSerializer,
-    VideoDetailSerializer, 
+    VideoDetailSerializer,
     AudioDetailSerializer,
     ImageSerializer,
     IntelligentProgramSerializer,
@@ -40,7 +42,7 @@ from api.serializers import (
     ProjectSerializer,
     TicketSerializer,
     RuleSerializer,
-    BackgroundSerializer
+    BackgroundSerializer, ExpositionSerializer, CollectionsSerializer
 )
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -255,3 +257,11 @@ class RuleViewSet(viewsets.ViewSet):
         queryset = Rule.objects.last()
         serializer_class = RuleSerializer(queryset)
         return Response(serializer_class.data)
+
+class ExpositionViewSet(viewsets.ModelViewSet):
+    queryset = Exposition.objects.all()
+    serializer_class = ExpositionSerializer
+
+class CollectionsViewSet(viewsets.ModelViewSet):
+    queryset = Collections.objects.all()
+    serializer_class = CollectionsSerializer
