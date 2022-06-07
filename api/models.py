@@ -108,8 +108,8 @@ class VideoDetail(models.Model):
 class AudioDetail(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=250)
-    video_file = models.FileField(upload_to="video/", blank=True)
-    youtube_link = EmbedVideoField(null=True, blank=True)
+    subtitle = models.CharField(max_length=55, default="dy dim-franka")
+    audio_file = models.FileField(upload_to="audio/", default='audio.mp3')
     link_audio = models.ForeignKey(ListAudio, on_delete=models.PROTECT, blank=True)
     description = models.TextField(default="None")
 
