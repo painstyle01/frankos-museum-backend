@@ -1,14 +1,14 @@
 import random
 from django.conf import settings
 from .models import (
-    Product, 
-    BlogPost, 
-    ActualNews, 
-    Timeline, 
-    Library, 
+    Product,
+    BlogPost,
+    ActualNews,
+    Timeline,
+    Library,
     ListAudio,
-    ListVideo, 
-    VideoDetail, 
+    ListVideo,
+    VideoDetail,
     AudioDetail,
     Image,
     IntelligentProgram,
@@ -20,8 +20,8 @@ from .models import (
     Rule,
     Background,
     Exposition,
-    Collections
-    )
+    Collections,
+)
 from rest_framework import viewsets
 from rest_framework.response import Response
 from api.serializers import (
@@ -42,7 +42,9 @@ from api.serializers import (
     ProjectSerializer,
     TicketSerializer,
     RuleSerializer,
-    BackgroundSerializer, ExpositionSerializer, CollectionsSerializer
+    BackgroundSerializer,
+    ExpositionSerializer,
+    CollectionsSerializer,
 )
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -136,11 +138,11 @@ class ActualNewsArchiveViewSet(viewsets.ViewSet):
         if news:
             for row in news:
                 archive = ActualNewsArchive.objects.create(
-                    title = row['title'],
-                    author = row['author'],
-                    text = row['text'],
-                    date = row['date'],
-                    archived = row['archived']
+                    title=row["title"],
+                    author=row["author"],
+                    text=row["text"],
+                    date=row["date"],
+                    archived=row["archived"],
                 )
         news = ActualNews.objects.filter(archived=True).delete()
 
@@ -162,7 +164,7 @@ class ListVideoViewSet(viewsets.ViewSet):
         serializer_class = ListVideoSerializer(queryset, many=True)
         return Response(serializer_class.data)
 
-    def retrieve(self,request, pk=None):
+    def retrieve(self, request, pk=None):
         sety = VideoDetail.objects.filter(link_video=pk)
         serializer_class = VideoDetailSerializer(sety, many=True)
         return Response(serializer_class.data)
@@ -175,7 +177,7 @@ class ListAudioViewSet(viewsets.ViewSet):
         return Response(serializer_class.data)
 
     def retrieve(self, request, pk=None):
-        queryset = AudioDetail.objects.filter(link_audio = pk)
+        queryset = AudioDetail.objects.filter(link_audio=pk)
         serializer_class = AudioDetailSerializer(queryset, many=True)
         return Response(serializer_class.data)
 
@@ -192,18 +194,15 @@ class IntelligentProgramViewSet(viewsets.ViewSet):
         return Response(serializer_class.data)
 
     def retrieve(self, request, pk=None):
-        queryset1 = ListVideo.objects.get(id = pk)
-        queryset2 = VideoDetail.objects.filter(link_video = pk)
+        queryset1 = ListVideo.objects.get(id=pk)
+        queryset2 = VideoDetail.objects.filter(link_video=pk)
         serializer_class1 = ListVideoSerializer(queryset1)
         serializer_class2 = VideoDetailSerializer(queryset2, many=True)
         return Response(
-            {
-                "video": serializer_class1.data,
-                "video_detail": serializer_class2.data
-            }
+            {"video": serializer_class1.data, "video_detail": serializer_class2.data}
         )
 
-    
+
 class ArtProgramViewSet(viewsets.ViewSet):
     def list(self, request):
         queryset = ArtProgram.objects.all()
@@ -211,15 +210,12 @@ class ArtProgramViewSet(viewsets.ViewSet):
         return Response(serializer_class.data)
 
     def retrieve(self, request, pk=None):
-        queryset1 = ListVideo.objects.get(id = pk)
-        queryset2 = VideoDetail.objects.filter(link_video = pk)
+        queryset1 = ListVideo.objects.get(id=pk)
+        queryset2 = VideoDetail.objects.filter(link_video=pk)
         serializer_class1 = ListVideoSerializer(queryset1)
         serializer_class2 = VideoDetailSerializer(queryset2, many=True)
         return Response(
-            {
-                "video": serializer_class1.data,
-                "video_detail": serializer_class2.data
-            }
+            {"video": serializer_class1.data, "video_detail": serializer_class2.data}
         )
 
 
@@ -228,17 +224,14 @@ class EducationalProgramViewSet(viewsets.ViewSet):
         queryset = EducationalProgram.objects.all()
         serializer_class = EducationalProgramSerializer(queryset, many=True)
         return Response(serializer_class.data)
-    
+
     def retrieve(self, request, pk=None):
-        queryset1 = ListVideo.objects.get(id = pk)
-        queryset2 = VideoDetail.objects.filter(link_video = pk)
+        queryset1 = ListVideo.objects.get(id=pk)
+        queryset2 = VideoDetail.objects.filter(link_video=pk)
         serializer_class1 = ListVideoSerializer(queryset1)
         serializer_class2 = VideoDetailSerializer(queryset2, many=True)
         return Response(
-            {
-                "video": serializer_class1.data,
-                "video_detail": serializer_class2.data
-            }
+            {"video": serializer_class1.data, "video_detail": serializer_class2.data}
         )
 
 
@@ -258,9 +251,11 @@ class RuleViewSet(viewsets.ViewSet):
         serializer_class = RuleSerializer(queryset)
         return Response(serializer_class.data)
 
+
 class ExpositionViewSet(viewsets.ModelViewSet):
     queryset = Exposition.objects.all()
     serializer_class = ExpositionSerializer
+
 
 class CollectionsViewSet(viewsets.ModelViewSet):
     queryset = Collections.objects.all()

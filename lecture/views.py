@@ -10,11 +10,10 @@ from .serializer import LectureSerializer
 
 
 class LectureView(APIView):
-
     def post(self, request):
         serializer = LectureSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()   
+        serializer.save()
 
         text = f"Замовив - {request.data['name']}\n Адреса -  {request.data['email']}\n Телефон - {request.data['phone']}\n Коментар - {request.data['comment']}"
         send_mail(

@@ -64,9 +64,9 @@ class Timeline(models.Model):
 
 class ActualNewsArchive(models.Model):
     id = models.AutoField(primary_key=True)
-    title = models.TextField(max_length=300, default='None')
-    author = models.TextField(max_length=50, default='None')
-    text = models.TextField(default='None')
+    title = models.TextField(max_length=300, default="None")
+    author = models.TextField(max_length=50, default="None")
+    text = models.TextField(default="None")
     date = models.DateField()
     archived = models.BooleanField(default=False)
 
@@ -78,7 +78,7 @@ class ListVideo(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to="picture/")
-    inner_picture = ImageField(upload_to="picture/inner_pucture", default='default.png')
+    inner_picture = ImageField(upload_to="picture/inner_pucture", default="default.png")
     description = models.TextField(default="None")
 
     def __str__(self):
@@ -89,7 +89,7 @@ class ListAudio(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     picture = ImageField(upload_to="picture/")
-    inner_picture = ImageField(upload_to="picture/inner_pucture", default='default.png')
+    inner_picture = ImageField(upload_to="picture/inner_pucture", default="default.png")
     description = models.TextField(default="None")
 
     def __str__(self):
@@ -101,9 +101,7 @@ class VideoDetail(models.Model):
     title = models.CharField(max_length=250)
     video_file = models.FileField(upload_to="video/", blank=True)
     youtube_link = EmbedVideoField(null=True, blank=True)
-    link_video = models.ForeignKey(
-        ListVideo, on_delete=models.PROTECT, blank=True
-    )
+    link_video = models.ForeignKey(ListVideo, on_delete=models.PROTECT, blank=True)
     description = models.TextField(default="None")
 
 
@@ -112,9 +110,7 @@ class AudioDetail(models.Model):
     title = models.CharField(max_length=250)
     video_file = models.FileField(upload_to="video/", blank=True)
     youtube_link = EmbedVideoField(null=True, blank=True)
-    link_audio = models.ForeignKey(
-        ListAudio, on_delete=models.PROTECT, blank=True
-    )
+    link_audio = models.ForeignKey(ListAudio, on_delete=models.PROTECT, blank=True)
     description = models.TextField(default="None")
 
 
@@ -129,9 +125,7 @@ class IntelligentProgram(models.Model):
     image = models.ImageField(upload_to="programs/intelligent")
     title = models.CharField(max_length=55, default="Франко вдома")
     subtitle = models.CharField(max_length=255, default="Блог")
-    link_detail = models.ForeignKey(
-        ListVideo, on_delete=models.PROTECT
-    )
+    link_detail = models.ForeignKey(ListVideo, on_delete=models.PROTECT)
 
 
 class ArtProgram(models.Model):
@@ -139,9 +133,7 @@ class ArtProgram(models.Model):
     image = models.ImageField(upload_to="programs/art")
     title = models.CharField(max_length=55, default="Франко вдома")
     subtitle = models.CharField(max_length=255, default="Блог")
-    link_detail = models.ForeignKey(
-        ListVideo, on_delete=models.PROTECT
-    )
+    link_detail = models.ForeignKey(ListVideo, on_delete=models.PROTECT)
 
 
 class EducationalProgram(models.Model):
@@ -149,14 +141,12 @@ class EducationalProgram(models.Model):
     image = models.ImageField(upload_to="programs/art")
     title = models.CharField(max_length=55, default="Франко вдома")
     subtitle = models.CharField(max_length=255, default="Блог")
-    link_detail = models.ForeignKey(
-        ListVideo, on_delete=models.PROTECT
-    )
+    link_detail = models.ForeignKey(ListVideo, on_delete=models.PROTECT)
 
 
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
-    image = models.FileField(upload_to='projects/')
+    image = models.FileField(upload_to="projects/")
     title = models.CharField(max_length=155)
     subtitle = models.CharField(max_length=355)
     link = models.URLField()
@@ -186,7 +176,7 @@ class Background(models.Model):
 
 class Exposition(models.Model):
     id = models.AutoField(primary_key=True)
-    image = models.FileField(upload_to='exposition/')
+    image = models.FileField(upload_to="exposition/")
     title = models.CharField(max_length=155)
     subtitle = models.CharField(max_length=355)
     description = models.TextField(default="None")
@@ -194,6 +184,6 @@ class Exposition(models.Model):
 
 class Collections(models.Model):
     id = models.AutoField(primary_key=True)
-    image = models.FileField(upload_to='collections/')
+    image = models.FileField(upload_to="collections/")
     title = models.CharField(max_length=155)
     description = models.TextField(default="None")

@@ -27,20 +27,24 @@ router.register(r"products", views.ProductViewSet)
 router.register(r"news", views.NewsViewSet)
 router.register(r"timeline", views.TimelineViewSet)
 router.register(r"actualnews", views.ActualNewsViewSet)
-router.register(r'library', views.LibraryViewSet)
+router.register(r"library", views.LibraryViewSet)
 router.register(r"background", views.BackgroundViewSet, basename="background")
 router.register(r"list-video", views.ListVideoViewSet, basename="video")
 router.register(r"list-audio", views.ListAudioViewSet, basename="audio")
 router.register(r"image", views.ImageViewSet)
-router.register(r"program-intelligent", views.IntelligentProgramViewSet, basename="intelligent")
+router.register(
+    r"program-intelligent", views.IntelligentProgramViewSet, basename="intelligent"
+)
 router.register(r"program-art", views.ArtProgramViewSet, basename="art")
-router.register(r"program-educational", views.EducationalProgramViewSet, basename="educational")
+router.register(
+    r"program-educational", views.EducationalProgramViewSet, basename="educational"
+)
 router.register(r"archive", views.ActualNewsArchiveViewSet, basename="archive")
 router.register(r"project", views.ProjectViewSet)
 router.register(r"ticket", views.TicketViewSet)
-router.register(r"rule", views.RuleViewSet, basename='rule')
-router.register(r'collections', views.CollectionsViewSet)
-router.register(r'expositions', views.ExpositionViewSet)
+router.register(r"rule", views.RuleViewSet, basename="rule")
+router.register(r"collections", views.CollectionsViewSet)
+router.register(r"expositions", views.ExpositionViewSet)
 urlpatterns = [
     path("footer/", include("footer.urls")),
     path("contacts/", include("contacts.urls")),

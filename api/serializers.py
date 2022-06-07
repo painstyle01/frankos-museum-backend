@@ -16,7 +16,9 @@ from .models import (
     Project,
     Ticket,
     Rule,
-    Background, Exposition, Collections
+    Background,
+    Exposition,
+    Collections,
 )
 from rest_framework import serializers
 
@@ -80,13 +82,27 @@ class ListAudioSerializer(serializers.ModelSerializer):
 class VideoDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoDetail
-        fields = ("id", "title", "video_file", "youtube_link", "description", "link_video")
+        fields = (
+            "id",
+            "title",
+            "video_file",
+            "youtube_link",
+            "description",
+            "link_video",
+        )
 
 
 class AudioDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = AudioDetail
-        fields = ("id", "title", "video_file", "youtube_link", "description", "link_audio")
+        fields = (
+            "id",
+            "title",
+            "video_file",
+            "youtube_link",
+            "description",
+            "link_audio",
+        )
 
 
 class ImageSerializer(serializers.ModelSerializer):
