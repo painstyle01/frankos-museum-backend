@@ -16,7 +16,7 @@ from .models import (
     Rule,
     Background,
     Exposition,
-    Collections,
+    Collections, Timeline,
 )
 
 
@@ -60,3 +60,4 @@ admin.site.register(Ticket)
 admin.site.register(Rule)
 admin.site.register(Exposition)
 admin.site.register(Collections)
+admin.site.register(Timeline)
